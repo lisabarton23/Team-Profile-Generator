@@ -1,23 +1,5 @@
 const Employee =require("../lib/employee");
 
-//should this be a mock fs also? 
-// getName (){
-//     return this.name
-    
-//     }
-//     getId (){
-//         return this.id
-    
-//     }
-//     getEmail(){
-//         return this.email
-    
-//     }
-//     getRole (){//returns `'Employee'`
-//     return "Employee "
-    
-    
-//     }
 
 describe ('Employee', () => {
     
@@ -51,48 +33,73 @@ describe ('Employee', () => {
         })
     })
 
-//  describe ("id", ()=> {
-//     it ("should return the id value", ()=>{
+ describe ("id", ()=> {
+    it ("should return the id value", ()=>{
 
-//         //Arrange
-//         const id = new ID();
-//         const num ="1234"
-
-//         //Act
-       
-//         //Assert
-//         expect(this.id).toEqual("1234")
-//  })
-//  describe ("name", ()=> {
-//     it ("should return the email value", ()=>{
-
-//         //Arrange
-//         const email = new Email();
-//         const email1 ="123@gmail.com"
-
-//         //Act
-       
-//         //Assert
-//         expect(this.email).toEqual("123@gmail.com")
-//  })
-//  describe ("role", ()=> {
-//     it ("should return the role value", ()=>{
-
-//         //Arrange
-//         const role = new Role("Employee");
+        //Arrange
+        const idVal ="1234"
+        const newGuy = new Employee("guy", idVal, "a@a.com");
         
-
-//         //Act
+        //Act
        
+        //Assert
+        expect(newGuy.id).toEqual(idVal)
+ })})
+ describe ("getId", ()=> {    
+    it ("should return the id value when new instance of Employee is created and getid is called", ()=>{
+
+        const idVal ="1234"
+        const newGuy = new Employee("guy", idVal, "a@a.com");
+        
+    
+        //Assert
+        expect(newGuy.getId()).toEqual(idVal);
+    })
+})
+
+ describe ("email", ()=> {
+    it ("should return the email value", ()=>{
+
+        //Arrange
+        const emailVal ="l@gmail.com"
+        const newGuy = new Employee("guy", "1234", emailVal);
+        
+        //Act
+       
+        //Assert
+        expect(newGuy.email).toEqual(emailVal)
+ })})
+ describe ("getEmail", ()=> {    
+    it ("should return the email value when new instance of Employee is created and getEmail is called", ()=>{
+
+        const emailVal ="l@gmail.com"
+        const newGuy = new Employee("guy", "1234", emailVal);
+        
+    
+        //Assert
+        expect(newGuy.getEmail()).toEqual(emailVal);
+    })
+})
+
+// describe ("getRole", ()=> {    
+//     it ("should return the role value of Employee", ()=>{
+//         const namval ="Barry";
+//         const idVal ="1234"
+//         const emailVal ="l@gmail.com"
+//         const roleVal ="Employee"
+//         const newGuy = new Employee(roleVal)
+        
+    
 //         //Assert
-//         expect(return).toEqual("Employee")
-//  })
-
-// })
-
-
-
+//         expect(newGuy.getRole().text).toEqual(roleVal);
+//     })
 
 
 })
+
+
+
+
+
+
 
