@@ -4,7 +4,8 @@ const path =require('path')
 const Employee = require("./lib/employee")
 const Manager = require("./lib/Manager")
 const Engineer = require("./lib/Engineer")
-const Intern = require("./lib/intern")
+const Intern = require("./lib/intern");
+const generateHtml = require("./src/generatehtml")
 //need any empty array to capture names?
 const employeeArray = [];
 
@@ -33,29 +34,24 @@ const employeeArray = [];
 
   ])
 .then(function(emplObj){
-  // switch (new Employee().emplObj.role)) {
-  // case 1 :(emplObj.role=="Engineer"){
-  //   getEngineer(emplObj);
-  // } break; 
-  // case 2: (emplObj.role =="Intern"){
-  //   getIntern (emplObj);
-  // }break; 
-  // default :(emplObj.role =="Manager")
-  // { getManager (emplObj);}
-  // console.log(emplObj)
-  
-  if(emplObj.role=="Engineer"){
-    getEngineer(emplObj);
-  }else if(emplObj.role =="Intern"){
+
+  switch (emplObj.role) {
+  case "Engineer" :
+     getEngineer(emplObj);
+    break;
+  case "Intern": 
     getIntern (emplObj);
-  }
-  else(emplObj.role =="Manager")
-  { getManager (emplObj);}
-})}
+   break;
+  default:
+   getManager (emplObj);
+ 
+}})
+   }
 
 
 function getEngineer(emplObj){
-  inquirer.prompt([
+  inquirer
+  .prompt([
     {
             type : "input",
             message: "What is their GitHub Username?",
@@ -63,13 +59,43 @@ function getEngineer(emplObj){
           
           
           {type: "confirm",
-          name: "variable",
+          name: "answer",
           message: "Is your team complete?",
-          default: true
-          
+          default: true  
     }
-          ]) //need to add if false go to createTeam()
-              }
+          ])
+    .then(function(engineerObj){
+
+      //as soon as we ask 
+      //capture it 
+      //toss into an array
+      var newGuy = new Engineer (emplObj.name, emplObj.id, emplObj.email, engineerObj.github)
+      employeeArray.push(newGuy);
+      console.log(employeeArray);
+      //check if engineerObj.answer == true
+      if(engineerObj.answer == true){
+        console.log(generateHtml (employeeArray));
+        //write to filefunction writeToFile(fileName, data) {
+          // function writeToFile(fileName, data){
+          // return fs.writeFile(path.join(__dirname + "/dist", filename), data, (err) => err ? console.log(err) : console.log ("You did it"))
+          // .then((data) => {
+          //   writeToFile(fileName, generateHtml(data))})
+          // }
+          // writeToFile("index.html")
+      }
+        else {
+  createTeam ()}
+ })
+
+        //create html page
+        //pass employyeeArray
+        
+      //if false
+        //go back to the createTeam();
+          
+          
+          //need to add if false go to createTeam()
+  
 
   function getIntern(emplObj) {
 inquirer.prompt ([{
@@ -94,7 +120,7 @@ inquirer.prompt ([ {
        name: "variable",
        message: "Is your team complete?",
        default: true}
-
+// ineed to add the confirm into lib
 ])//need to add if false go to createTeam()
 
 
@@ -112,7 +138,7 @@ inquirer.prompt ([ {
   //if not done
   //call createTeam();
 
-
+}
   createTeam();
 // .then ((Response) =>//needs to do inquirer prompt for choice made above, 
 // // )
