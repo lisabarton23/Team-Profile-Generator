@@ -25,17 +25,18 @@ describe ('Engineer', () => {
         })
     })
 
-    // describe ("getRole", ()=> {    
-    //     it ("should return the name value when new instance of Employee is created and getName is called", ()=>{
-
-    //         //testcase
-    //         const namval ="Barry";
-    //         //testing the class
-    //         const newGuy = new Employee(namval, "1", "a@a.com");
-    //         //Act
+    describe ("getRole", ()=> {    
+        it ("should return the role value of Engineer", ()=>{
+            const testVal = "Engineer"
         
-    //         //Assert
-    //         expect(newGuy.getName()).toEqual(namval);
-    //     })
-    // })
+           
+            const newGuy = new Engineer();
+            expect(newGuy.getRole()).toEqual(testVal);
+    
+        
+        })
+    
+    
+    })
+    
 })

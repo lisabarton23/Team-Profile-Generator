@@ -40,13 +40,13 @@ const employeeArray = [];
      getEngineer(emplObj);
     break;
   case "Intern": 
-    getIntern (emplObj);
+    getIntern(emplObj);
    break;
   default:
-   getManager (emplObj);
+   getManager(emplObj);
  
 }})
-   }
+   
 
 
 function getEngineer(emplObj){
@@ -76,12 +76,12 @@ function getEngineer(emplObj){
       if(engineerObj.answer == true){
         console.log(generateHtml (employeeArray));
         //write to filefunction writeToFile(fileName, data) {
-          // function writeToFile(fileName, data){
-          // return fs.writeFile(path.join(__dirname + "/dist", filename), data, (err) => err ? console.log(err) : console.log ("You did it"))
-          // .then((data) => {
-          //   writeToFile(fileName, generateHtml(data))})
-          // }
-          // writeToFile("index.html")
+          function writeToFile(fileName, data){
+          fs.writeFile(path.join(__dirname + "/dist", fileName), data, (err) => err ? console.log(err) : console.log ("You did it"))
+          
+           
+          }
+          writeToFile("index.html", generateHtml(employeeArray))
       }
         else {
   createTeam ()}
@@ -107,7 +107,28 @@ inquirer.prompt ([{
         name: "variable",
         message: "Is your team complete?",
         default: true}
-])//need to add if false go to createTeam()
+]).then(function(internObj){
+
+  //as soon as we ask 
+  //capture it 
+  //toss into an array
+  var newGuy = new Intern (internObj.name, internObj.id, internObj.email, internObj.github)
+  employeeArray.push(newGuy);
+  console.log(employeeArray);
+  //check if engineerObj.answer == true
+  if(internObj.answer == true){
+    console.log(generateHtml (employeeArray));
+    //write to filefunction writeToFile(fileName, data) {
+      function writeToFile(fileName, data){
+      fs.writeFile(path.join(__dirname + "/dist", fileName), data, (err) => err ? console.log(err) : console.log ("You did it"))
+      
+       
+      }
+      writeToFile("index.html", generateHtml(employeeArray))
+  }
+    else {
+createTeam ()}
+})//need to add if false go to createTeam()
 
 }
 
@@ -121,12 +142,33 @@ inquirer.prompt ([ {
        message: "Is your team complete?",
        default: true}
 // ineed to add the confirm into lib
-])//need to add if false go to createTeam()
+]).then(function(managerObj){
+
+  //as soon as we ask 
+  //capture it 
+  //toss into an array
+  var newGuy = new Manager (managerObj.name, managerObj.id, managerObj.email, managerObj.github)
+  employeeArray.push(newGuy);
+  console.log(employeeArray);
+  //check if engineerObj.answer == true
+  if(managerObj.answer == true){
+    console.log(generateHtml (employeeArray));
+    //write to filefunction writeToFile(fileName, data) {
+      function writeToFile(fileName, data){
+      fs.writeFile(path.join(__dirname + "/dist", fileName), data, (err) => err ? console.log(err) : console.log ("You did it"))
+      
+       
+      }
+      writeToFile("index.html", generateHtml(employeeArray))
+  }
+    else {
+createTeam ()}
+})//need to add if false go to createTeam()
 
 
 }
   
-  
+}
   //ask if done
 
   //if done

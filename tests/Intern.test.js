@@ -1,5 +1,6 @@
 // In addition to `Employee`'s properties and methods, `Intern` will also have the following:
 const Employee = require("../lib/employee"); 
+const Intern = require("../lib/intern");
 const Engineer = require("../lib/intern");
 // * `school`
 
@@ -24,17 +25,18 @@ describe ('Intern', () => {
         })
     })
 
-    // describe ("getRole", ()=> {    
-    //     it ("should return the name value when new instance of Employee is created and getName is called", ()=>{
-
-    //         //testcase
-    //         const namval ="Barry";
-    //         //testing the class
-    //         const newGuy = new Employee(namval, "1", "a@a.com");
-    //         //Act
+    describe ("getRole", ()=> {    
+        it ("should return the role value of Intern", ()=>{
+            const testVal = "Intern"
         
-    //         //Assert
-    //         expect(newGuy.getName()).toEqual(namval);
-    //     })
-    // })
+           
+            const newGuy = new Intern();
+            expect(newGuy.getRole()).toEqual(testVal);
+    
+        
+        })
+    
+    
+    })
+    
 })

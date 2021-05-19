@@ -84,10 +84,8 @@ describe ('Employee', () => {
 describe ("getRole", ()=> {    
     it ("should return the role value of Employee", ()=>{
         const testVal = "Employee"
-        // const namval ="Barry";
-        // const idVal ="1234"
-        // const emailVal ="l@gmail.com"
-        // const roleVal ="Employee"
+    
+       
         const newGuy = new Employee();
         expect(newGuy.getRole()).toEqual(testVal);
 
