@@ -23,13 +23,13 @@ function generateHtml(employeeArray){
          <div class="card" id ="manager" style="width: 18rem;">
          <img src="..." class="card-img-top" alt="...">
          <div class="card-body">
-           <h5 class="card-title">Name ${employee.getName()}</h5>
-           <p class="card-text">Manager</p>
+           <h5 class="card-title"> ${employee.getName()}</h5>
+           <p class="card-text">${employee.getRole()}</p>
          </div>
          <ul class="list-group list-group-flush">
-           <li class="list-group-item">Id# : ""</li>
-           <li class="list-group-item">Email: ""</li>
-           <li class="list-group-item">Office Number: ""</li>
+           <li class="list-group-item">${employee.getId()}</li>
+         <li class="list-group-item">${employee.getEmail()}</li>
+           <li class="list-group-item">${employee.getGithub()}</li>
          </ul>
          <div class="card-body">
            <a href="#" class="card-link">Card link</a>
@@ -42,7 +42,59 @@ function generateHtml(employeeArray){
         }
       });
 
-     return htmlData+=`
+     return htmlData+=
+     employeeArray.map(employee => {
+      if (employee.getRole() == "Intern") {
+       htmlData+=`
+       <div class="card" id ="manager" style="width: 18rem;">
+       <img src="..." class="card-img-top" alt="...">
+       <div class="card-body">
+         <h5 class="card-title"> ${employee.getName()}</h5>
+         <p class="card-text">${employee.getRole()}</p>
+       </div>
+       <ul class="list-group list-group-flush">
+         <li class="list-group-item">${employee.getId()}</li>
+         <li class="list-group-item">${employee.getEmail()}</li>
+         <li class="list-group-item">${employee.getSchool()}</li>
+       </ul>
+       <div class="card-body">
+         <a href="#" class="card-link">Card link</a>
+         <a href="#" class="card-link">Another link</a>
+       </div>
+     </div>  
+       `
+      } else {
+       // return 'odd'
+      }
+    });
+
+   return htmlData+=
+   employeeArray.map(employee => {
+    if (employee.getRole() == "Manager") {
+     htmlData+=`
+     <div class="card" id ="manager" style="width: 18rem;">
+     <img src="..." class="card-img-top" alt="...">
+     <div class="card-body">
+       <h5 class="card-title"> ${employee.getName()}</h5>
+       <p class="card-text">${employee.getRole()}</p>
+     </div>
+     <ul class="list-group list-group-flush">
+       <li class="list-group-item">${employee.getId()}</li>
+       <li class="list-group-item">${employee.getEmail()}</li>
+       <li class="list-group-item">${employee.getOffice()}</li>
+     </ul>
+     <div class="card-body">
+       <a href="#" class="card-link">Card link</a>
+       <a href="#" class="card-link">Another link</a>
+     </div>
+   </div>  
+     `
+    } else {
+     // return 'odd'
+    }
+  });
+
+ return htmlData+=`
      </div>
       <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

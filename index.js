@@ -42,8 +42,11 @@ const employeeArray = [];
   case "Intern": 
     getIntern(emplObj);
    break;
-  default:
-   getManager(emplObj);
+   case "Manager":
+     getManager(emplObj)
+     break; 
+  // default:
+  //  getManager(emplObj); 
  
 }})
    
@@ -87,16 +90,6 @@ function getEngineer(emplObj){
   createTeam ()}
  })
 
-        //create html page
-        //pass employyeeArray
-        
-      //if false
-        //go back to the createTeam();
-          
-          
-          //need to add if false go to createTeam()
-  
-
   function getIntern(emplObj) {
 inquirer.prompt ([{
         type : "input",
@@ -104,7 +97,7 @@ inquirer.prompt ([{
         name: "school",},
 
         {type: "confirm",
-        name: "variable",
+        name: "answer",
         message: "Is your team complete?",
         default: true}
 ]).then(function(internObj){
@@ -138,7 +131,7 @@ inquirer.prompt ([ {
       message: "What is your office number?",
       name: "officeNumber",},
        {type: "confirm",
-       name: "variable",
+       name: "answer",
        message: "Is your team complete?",
        default: true}
 // ineed to add the confirm into lib
